@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/cristianosantos/Libgdx/LiveXAML/libraries/jetty-all-9.0.4.v20130625.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
