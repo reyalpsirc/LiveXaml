@@ -12,6 +12,8 @@ namespace LiveXAML
 	public class TestPage : ContentPage
 	{
 		IXamlDependency xamlDep;
+		string ipAddress="127.0.0.1";
+		string port="9934";
 		bool receivedMessage=false;
 
 		public TestPage ()
@@ -38,6 +40,15 @@ namespace LiveXAML
 						await DisplayAlert("Connection failed","Connection failed on \""+realAddress+"\".\n"+obj.Message,"Ok");
 					});
 					Debug.WriteLine(obj);
+				};
+				client.Closed = delegate() {
+					Debug.WriteLine ("Closed");
+					if (receivedMessage){
+						receivedMessage=false;
+						Device.BeginInvokeOnMainThread(delegate {
+							Content=StartLayout();
+						});
+					}
 				};
 				client.MessageReceived = delegate(string message) {
 					if (!receivedMessage){
@@ -116,7 +127,7 @@ namespace LiveXAML
 			};
 			var ipEntry = new Entry {
 				HorizontalOptions=LayoutOptions.FillAndExpand,
-				Text="127.0.0.1"
+				Text=ipAddress
 			};
 			var layout= new StackLayout{
 				HeightRequest=40,
@@ -134,7 +145,7 @@ namespace LiveXAML
 			};
 			var portEntry = new Entry {
 				HorizontalOptions=LayoutOptions.FillAndExpand,
-				Text="9934"
+				Text=port
 			};
 			layout= new StackLayout{
 				HeightRequest=40,
@@ -151,7 +162,9 @@ namespace LiveXAML
 				BackgroundColor=Color.Gray
 			};
 			connectButton.Clicked += delegate(object sender, EventArgs e) {
-				ConnectServer(ipEntry.Text,int.Parse(portEntry.Text));
+				ipAddress=ipEntry.Text;
+				port=portEntry.Text;
+				ConnectServer(ipAddress,int.Parse(port));
 			};
 			layout= new StackLayout{
 				HeightRequest=40,

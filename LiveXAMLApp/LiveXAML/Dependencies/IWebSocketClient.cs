@@ -15,6 +15,11 @@ namespace LiveXAML
 			set;
 		}
 
+		public Action Closed {
+			get;
+			set;
+		}
+
 		public Action<string> MessageReceived {
 			get;
 			set;

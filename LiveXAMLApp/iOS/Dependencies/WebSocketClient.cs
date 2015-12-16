@@ -33,18 +33,25 @@ namespace LiveXAML.iOS
 			};
 			websocket.Error += delegate(object sender, SuperSocket.ClientEngine.ErrorEventArgs e) {
 				if (!connected && websocket!=null){
-					connected = true;
 					websocket.Close();
+					connected = true;
 					if (Error!=null){
 						Error(e.Exception);
 					}	
 				}
 			};
+			websocket.Closed += delegate(object sender, EventArgs e) {
+				if (connected){
+					if (Closed != null) {
+						Closed ();
+					}
+				}
+			};
 			timer = new Task (async delegate() {
 				await Task.Delay(2000);	
 				if (!connected && websocket!=null){
-					connected = true;
 					websocket.Close();
+					connected = true;
 					if (Error!=null){
 						Error(new Exception("Connection failed"));
 					}	
