@@ -35,6 +35,9 @@
     <Compile Include="TestPage.cs" />
     <Compile Include="Dependencies\IXamlDependency.cs" />
     <Compile Include="Dependencies\IWebSocketClient.cs" />
+    <Compile Include="MyPage.xaml.cs">
+      <DependentUpon>MyPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -67,9 +70,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="test.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dependencies\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
