@@ -18,7 +18,7 @@ For that and, in order to support both Windows and Mac OS X, I used JAVA togethe
 
 ##Video instructions
 
-[Coming soon]
+[![LiveXaml Tutorial](http://img.youtube.com/vi/a7bahYPkhbM/0.jpg)](http://www.youtube.com/watch?v=a7bahYPkhbM "LiveXaml Tutorial")
 
 ## How to build
 
